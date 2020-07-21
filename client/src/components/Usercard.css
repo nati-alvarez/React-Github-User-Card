@@ -1,3 +1,7 @@
+.followers .user-card {
+    margin: 5vh 0;
+}
+
 .user-card {
     color: #1f1f1f;
     background: whitesmoke;

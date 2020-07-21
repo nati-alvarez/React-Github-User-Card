@@ -1,6 +1,6 @@
 html {
   background: url("https://github-images.s3.amazonaws.com/blog/2011/cc-wallpaper-desktop.png");
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
 }
