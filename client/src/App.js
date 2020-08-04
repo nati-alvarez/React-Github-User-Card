@@ -11,8 +11,11 @@ class App extends React.Component {
     super();
     this.state = {
       user: null,
-      followers: null
+      followers: null,
+      query: "",
+      searchResult: null
     }
+    this.search = this.search.bind(this)
   }
 
   componentDidMount(){
@@ -33,6 +36,28 @@ class App extends React.Component {
     })
   }
 
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.query !== this.state.query){
+      axios.get("https://api.github.com/users/" + this.state.query).then(({data})=>{
+        this.setState({
+          ...this.state,
+          searchResult: data
+        });
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+  }
+
+  search(e){
+    e.preventDefault();
+    let query = document.getElementById("query").value;
+    this.setState({
+      ...this.state,
+      query: query
+    })
+  }
+
   render(){
     console.log(this.state.followers)
     return (
@@ -47,6 +72,15 @@ class App extends React.Component {
           {this.state.followers? this.state.followers.map(follower=>{
             return <Usercard user={follower}/>;
           }): <Loader/> }
+        </div>
+        <div>
+          <h3>Find a User</h3>
+          <form onSubmit={this.search}> 
+            <input type="text" id="query"/>
+            <button>Search</button>
+          </form>
+          <br></br>
+          {this.state.searchResult && <Usercard user={this.state.searchResult}/>}
         </div>
       </div>
     );
