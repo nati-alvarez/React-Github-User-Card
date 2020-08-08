@@ -1,0 +1,25 @@
+.followers .user-card {
+    margin: 5vh 0;
+}
+
+.user-card {
+    color: #1f1f1f;
+    background: whitesmoke;
+    display: flex;
+    border: 1px solid gainsboro;
+    padding: 2vh;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 5px 5px 20px #3f3f3f;
+}
+
+.user-card .pfp {
+    padding: 0 2vh;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+}
+
+.user-card .name {
+    margin: 0;
+}
